@@ -1,6 +1,8 @@
 homepage: "https://conde.marketing"
 documentation: "https://github.com/felipeconde-mkt/conde-click-id-resolver-gtm-template#readme"
 versions:
+  - sha: 477f97a701045c8359b201f2c1dd7c403309e0b6
+    changeNotes: Restore the original google_session_attributes localStorage behavior while keeping individual Click IDs URL-only and never persisted.
   - sha: 0ce242e4af193c253e52a73809e603a2e0e8e342
     changeNotes: Remove all localStorage reads, writes, persistence settings, and permissions. Click IDs and Google Session Attributes now use only the current URL.
   - sha: 5af457e86c4dbcfe1a28fe862949fd30fec9e662
