@@ -1,6 +1,8 @@
 homepage: "https://conde.marketing"
 documentation: "https://github.com/felipeconde-mkt/conde-click-id-resolver-gtm-template#readme"
 versions:
+  - sha: 31c55a0659ce4835cc9b50b0144cbbbe506bb124
+    changeNotes: Remove the crown emoji from the template display name and documentation.
   - sha: 07fde48a5bfb9a0b259c38b05a060849f4255707
     changeNotes: Correct the GTM Web permission schemas for URL, referrer, and localStorage access so the exported template can be parsed correctly.
   - sha: 1b0f1e08f5be7932d31db4c3699ba8053fca34cf
