@@ -8,14 +8,14 @@ Google may provide), as modified from time to time.
 ___INFO___
 {
   "type": "MACRO",
-  "id": "conde_click_id_resolver_web",
+  "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
   "displayName": "Click ID Resolver — Conde MKTech",
   "brand": {
     "id": "conde_mktech",
     "displayName": "Conde MKTech",
-    "thumbnail": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIGRlc2MiPgogIDx0aXRsZSBpZD0idGl0bGUiPkNvcm9hIENvbmRlIE1LVGVjaDwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2MiPkNvcm9hIGRvdXJhZGEgbWluaW1hbGlzdGEgdXNhZGEgbmEgaWRlbnRpZGFkZSB2aXN1YWwgZGEgQ29uZGUgTUtUZWNoLjwvZGVzYz4KICA8cGF0aCBmaWxsPSIjRkZDNjI5IiBkPSJNMjYgNzEgNzYgMTE1IDEyOCAzMiAxODAgMTE1IDIzMCA3MSAyMDkgMjE0IDQ3IDIxNFoiLz4KPC9zdmc+Cg=="
+    "thumbnail": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABi0lEQVR42u3cwXHDMAwFUQqTZtJC+p+0kHKcaw6ZsRKRAmC+bUAglx+kZdpjAAAAAAAAAMAZHp/vj871xytMfmcJIUMETGk9XVMgAQTM23g7pkACCJh77OyWAgkgYP6Hrk4pkAAC1rxy6JKCeOX3PR0kaEEErF3F1VMgAdUFZK6gWc+uPIYYG3zpUXkBRdVVNPt5Vet/KuD4+Dok4f+T/3P+pmzCd0hY9YyKtb9decgzu/r94mPoihW1epVWqzl2vxaSPf7Y8bxeqd5TAs70+m6vDO6o98y8xXBLLXWcUaG4LHEVao3hvmbquGL372+z6ww3l3PHcdxVyG8ngkqCZtd39i1BuMefW29kDaqakKzawi9acusLPyvKrStWbCy785d5citiuJZCAAggAE0EOAnNnR8J0IIIAAEEoJMAJ6F58yIBWhABIIAAG3HCBiwBWhAIIIAAdBXgJHR9HiRACyIABBCArgJ2PwldHb8EaEEEgAAC0FnAriehGeOWgGyJw98TSDwAAAAA7MQ3n6T6kVeCutUAAAAASUVORK5CYII="
   },
   "description": "Resolve identificadores de clique de múltiplas plataformas, com nomes invertidos anti-ITP e persistência exclusiva de Google Session Attributes conforme o código original.",
   "categories": [
