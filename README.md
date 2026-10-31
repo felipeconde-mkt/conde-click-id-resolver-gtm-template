@@ -1,4 +1,4 @@
-# 👑 Click ID Resolver — Conde MKTech
+# Click ID Resolver — Conde MKTech
 
 <p align="left">
   <img src="assets/crown.svg" width="128" height="128" alt="Coroa Conde MKTech">
@@ -20,7 +20,7 @@ Variável para **Google Tag Manager WEB** que centraliza identificadores de cliq
 1. Baixe `template.tpl`.
 2. No GTM WEB, acesse **Templates → Variable Templates → New**.
 3. Use **Import** e selecione o arquivo.
-4. Salve e crie uma variável usando **👑 Click ID Resolver - by Conde MKTech**.
+4. Salve e crie uma variável usando **Click ID Resolver — Conde MKTech**.
 
 ## Atualizações
 

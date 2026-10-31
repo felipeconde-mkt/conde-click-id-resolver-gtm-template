@@ -11,7 +11,7 @@ ___INFO___
   "id": "conde_click_id_resolver_web",
   "version": 1,
   "securityGroups": [],
-  "displayName": "👑 Click ID Resolver - by Conde MKTech",
+  "displayName": "Click ID Resolver — Conde MKTech",
   "brand": {
     "id": "conde_mktech",
     "displayName": "Conde MKTech",
