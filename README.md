@@ -11,8 +11,8 @@ Variável para **Google Tag Manager WEB** que centraliza identificadores de cliq
 - Uma variável retorna todos os Click IDs em um objeto.
 - Parâmetro oficial tem prioridade.
 - Contingência por nomes invertidos/alternativos para cenários de ITP, redirects e filtros de parâmetros.
-- Persistência first-party em `localStorage`.
-- Gera `session_attributes_encoded` com parâmetros `gad_*`, mantendo compatibilidade com o fluxo de Google Session Attributes.
+- Lê exclusivamente os identificadores presentes na URL atual; não usa `localStorage`.
+- Gera `session_attributes_encoded` com parâmetros `gad_*` somente a partir da URL atual.
 - Permite adicionar mapeamentos personalizados pela interface.
 
 ## Instalação manual

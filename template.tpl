@@ -15,7 +15,7 @@ ___INFO___
     "displayName": "Conde MKTech",
     "thumbnail": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIGRlc2MiPgogIDx0aXRsZSBpZD0idGl0bGUiPkNvcm9hIENvbmRlIE1LVGVjaDwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2MiPkNvcm9hIGRvdXJhZGEgbWluaW1hbGlzdGEgdXNhZGEgbmEgaWRlbnRpZGFkZSB2aXN1YWwgZGEgQ29uZGUgTUtUZWNoLjwvZGVzYz4KICA8cGF0aCBmaWxsPSIjRkZDNjI5IiBkPSJNMjYgNzEgNzYgMTE1IDEyOCAzMiAxODAgMTE1IDIzMCA3MSAyMDkgMjE0IDQ3IDIxNFoiLz4KPC9zdmc+Cg=="
   },
-  "description": "Resolve identificadores de clique de múltiplas plataformas em uma única variável, com aliases invertidos anti-ITP, persistência em localStorage e Google Session Attributes.",
+  "description": "Resolve identificadores de clique de múltiplas plataformas em uma única variável, com nomes invertidos anti-ITP e Google Session Attributes gerados somente a partir da URL atual.",
   "categories": [
     "ADVERTISING",
     "ANALYTICS"
@@ -140,25 +140,17 @@ ___TEMPLATE_PARAMETERS___
   },
   {
     "type": "GROUP",
-    "name": "storageGroup",
-    "displayName": "Persistência e Google Session Attributes",
+    "name": "sessionAttributesGroup",
+    "displayName": "Google Session Attributes",
     "groupStyle": "ZIPPY_OPEN",
     "subParams": [
-      {
-        "type": "CHECKBOX",
-        "name": "persistIds",
-        "checkboxText": "Persistir identificadores no localStorage",
-        "simpleValueType": true,
-        "defaultValue": true,
-        "help": "A URL atual sempre tem prioridade. Na ausência do parâmetro, reutiliza o valor capturado anteriormente no mesmo domínio."
-      },
       {
         "type": "CHECKBOX",
         "name": "includeSessionAttributes",
         "checkboxText": "Criar session_attributes_encoded para parâmetros gad_*",
         "simpleValueType": true,
         "defaultValue": true,
-        "help": "Mantém a contingência do código original: captura gad_*, horário em micros, landing page e referrer, codifica em Base64 URL-safe e salva como google_session_attributes."
+        "help": "Captura gad_*, horário em micros, landing page e referrer da URL atual e codifica em Base64 URL-safe. Nenhum valor é salvo no localStorage."
       }
     ]
   },
@@ -211,15 +203,12 @@ ___TEMPLATE_PARAMETERS___
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 const getUrl = require('getUrl');
 const getReferrerUrl = require('getReferrerUrl');
-const localStorage = require('localStorage');
 const JSON = require('JSON');
 const makeString = require('makeString');
 const getTimestampMillis = require('getTimestampMillis');
 const decodeUriComponent = require('decodeUriComponent');
 const toBase64 = require('toBase64');
 
-const STORAGE_KEY = 'conde_click_identifiers';
-const GOOGLE_STORAGE_KEY = 'google_session_attributes';
 
 const trim = value => {
   if (value === undefined || value === null) return '';
@@ -265,16 +254,7 @@ const splitNames = text => {
   return result;
 };
 
-const readStored = key => {
-  if (!data.persistIds) return {};
-  const raw = localStorage.getItem(key);
-  if (!raw) return {};
-  const parsed = JSON.parse(raw);
-  return parsed || {};
-};
-
 const query = parseQuery(getUrl('query'));
-const stored = readStored(STORAGE_KEY);
 const result = {};
 
 const resolve = (outputName, names) => {
@@ -287,8 +267,6 @@ const resolve = (outputName, names) => {
     }
     index++;
   }
-  const previous = trim(stored[outputName]);
-  if (previous) result[outputName] = previous;
 };
 
 // O primeiro nome é o parâmetro oficial. O segundo é sempre o nome oficial
@@ -334,8 +312,6 @@ while (customIndex < customMappings.length) {
   customIndex++;
 }
 
-if (data.persistIds) localStorage.setItem(STORAGE_KEY, JSON.stringify(result));
-
 if (data.includeSessionAttributes) {
   const googleAttributes = {};
   let hasGoogleParams = result.gclid !== undefined || result.gbraid !== undefined || result.wbraid !== undefined || result.dclid !== undefined;
@@ -352,9 +328,6 @@ if (data.includeSessionAttributes) {
     googleAttributes.landing_page_referrer = getReferrerUrl();
     encoded = toBase64(JSON.stringify(googleAttributes)).split('+').join('-').split('/').join('_');
     while (encoded.length && encoded[encoded.length - 1] === '=') encoded = encoded.slice(0, encoded.length - 1);
-    localStorage.setItem(GOOGLE_STORAGE_KEY, encoded);
-  } else {
-    encoded = localStorage.getItem(GOOGLE_STORAGE_KEY);
   }
   if (encoded) result.session_attributes_encoded = encoded;
 }
@@ -420,57 +393,6 @@ ___WEB_PERMISSIONS___
       "isEditedByUser": true
     },
     "isRequired": true
-  },
-  {
-    "instance": {
-      "key": {
-        "publicId": "access_local_storage",
-        "versionId": "1"
-      },
-      "param": [
-        {
-          "key": "localStorageAccess",
-          "value": {
-            "type": 1,
-            "string": "specific"
-          }
-        },
-        {
-          "key": "localStorageKeys",
-          "value": {
-            "type": 2,
-            "listItem": [
-              {
-                "type": 1,
-                "string": "conde_click_identifiers"
-              },
-              {
-                "type": 1,
-                "string": "google_session_attributes"
-              }
-            ]
-          }
-        },
-        {
-          "key": "read",
-          "value": {
-            "type": 1,
-            "boolean": true
-          }
-        },
-        {
-          "key": "write",
-          "value": {
-            "type": 1,
-            "boolean": true
-          }
-        }
-      ]
-    },
-    "clientAnnotations": {
-      "isEditedByUser": true
-    },
-    "isRequired": true
   }
 ]
 
@@ -478,15 +400,13 @@ ___TESTS___
 scenarios:
 - name: Official parameter takes priority over inverted fallback
   code: runCode();
-- name: Stored click identifiers are reused when URL has no identifiers
+- name: Google gad parameters generate session_attributes_encoded from current URL
   code: runCode();
-- name: Google gad parameters generate session_attributes_encoded
-  code: runCode();
-- name: Empty result returns undefined
+- name: URL without identifiers returns undefined
   code: runCode();
 
 ___NOTES___
 Created on 31/10/2026.
 Homepage and support: https://conde.marketing
 The official URL parameter always wins over inverted and legacy aliases.
-Stored values are first-party localStorage values scoped to the current origin.
+The variable does not read from or write to localStorage.
