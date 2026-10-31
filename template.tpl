@@ -168,35 +168,18 @@ ___TEMPLATE_PARAMETERS___
         "simpleTableColumns": [
           {
             "defaultValue": "",
-            "displayName": "Nome na saída",
-            "name": "outputName",
+            "displayName": "Parâmetro personalizado",
+            "name": "parameter",
             "type": "TEXT",
             "valueValidators": [
               {
                 "type": "NON_EMPTY"
               }
             ]
-          },
-          {
-            "defaultValue": "",
-            "displayName": "Parâmetro principal",
-            "name": "primaryParam",
-            "type": "TEXT",
-            "valueValidators": [
-              {
-                "type": "NON_EMPTY"
-              }
-            ]
-          },
-          {
-            "defaultValue": "",
-            "displayName": "Fallbacks separados por vírgula",
-            "name": "fallbackParams",
-            "type": "TEXT"
           }
         ],
         "newRowButtonText": "Adicionar identificador",
-        "help": "O primeiro parâmetro preenchido vence. Use esta tabela para redes, afiliados ou nomes invertidos próprios."
+        "help": "Informe apenas o nome do parâmetro. O mesmo nome será usado na saída e a versão com os caracteres invertidos será testada automaticamente como fallback."
       }
     ]
   }
@@ -245,17 +228,15 @@ const parseQuery = queryText => {
   return result;
 };
 
-const splitNames = text => {
-  const result = [];
-  if (!text) return result;
-  const values = makeString(text).split(',');
-  let index = 0;
-  while (index < values.length) {
-    const value = trim(values[index]);
-    if (value && result.indexOf(value) === -1) result.push(value);
-    index++;
+const reverseText = text => {
+  const value = trim(text);
+  let reversed = '';
+  let index = value.length - 1;
+  while (index >= 0) {
+    reversed += value[index];
+    index--;
   }
-  return result;
+  return reversed;
 };
 
 const query = parseQuery(getUrl('query'));
@@ -310,9 +291,8 @@ const customMappings = data.customMappings || [];
 let customIndex = 0;
 while (customIndex < customMappings.length) {
   const row = customMappings[customIndex] || {};
-  const outputName = trim(row.outputName);
-  const names = splitNames(row.primaryParam + ',' + (row.fallbackParams || ''));
-  if (outputName && names.length) resolve(outputName, names);
+  const parameter = trim(row.parameter);
+  if (parameter) resolve(parameter, [parameter, reverseText(parameter)]);
   customIndex++;
 }
 

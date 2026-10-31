@@ -13,7 +13,7 @@ Variável para **Google Tag Manager WEB** que centraliza identificadores de cliq
 - Contingência por nomes invertidos/alternativos para cenários de ITP, redirects e filtros de parâmetros.
 - Os Click IDs são lidos exclusivamente da URL atual e nunca são persistidos.
 - Apenas `google_session_attributes` é salvo no `localStorage`, replicando o comportamento do código original para reutilização nas páginas seguintes.
-- Permite adicionar mapeamentos personalizados pela interface.
+- Permite adicionar parâmetros personalizados em uma única coluna; o nome informado também é usado na saída e sua inversão exata é testada automaticamente como fallback.
 
 ## Instalação manual
 
