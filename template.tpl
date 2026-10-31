@@ -291,31 +291,31 @@ const resolve = (outputName, names) => {
   if (previous) result[outputName] = previous;
 };
 
-// O primeiro nome é o parâmetro oficial. Os demais preservam as inversões
-// e aliases legados usados como contingência contra bloqueios/remoções de ITP.
+// O primeiro nome é o parâmetro oficial. O segundo é sempre o nome oficial
+// com todos os caracteres em ordem inversa, sem prefixos ou sufixos extras.
 const mappings = [
   ['gclid', ['gclid', 'dilcg']],
   ['dclid', ['dclid', 'dilcd']],
-  ['wbraid', ['wbraid']],
-  ['gbraid', ['gbraid']],
+  ['wbraid', ['wbraid', 'diarbw']],
+  ['gbraid', ['gbraid', 'diarbg']],
   ['fbclid', ['fbclid', 'dilcbf']],
   ['ttclid', ['ttclid', 'dilctt']],
-  ['msclkid', ['msclkid', 'diklcsm', 'dilcms']],
-  ['epik', ['epik', 'kipe', 'dilckipe']],
-  ['li_fat_id', ['li_fat_id', 'di_taf_il', 'dilcli']],
-  ['twclid', ['twclid', 'dilcwt', 'dilctw']],
-  ['tblci', ['tblci', 'tbclid', 'dilcbt', 'dilctb']],
-  ['obclid', ['obclid', 'dilcbo', 'dilcob']],
-  ['sc_click_id', ['ScCid', 'sccid', 'sc_click_id', 'scid', 'dics', 'dilcsc']],
-  ['rdt_cid', ['rdt_cid', 'dic_tdr', 'dilcrdt']],
+  ['msclkid', ['msclkid', 'diklcsm']],
+  ['epik', ['epik', 'kipe']],
+  ['li_fat_id', ['li_fat_id', 'di_taf_il']],
+  ['twclid', ['twclid', 'dilcwt']],
+  ['tblci', ['tblci', 'iclbt']],
+  ['obclid', ['obclid', 'dilcbo']],
+  ['sc_click_id', ['ScCid', 'diCcS']],
+  ['rdt_cid', ['rdt_cid', 'dic_tdr']],
   ['yclid', ['yclid', 'dilcy']],
-  ['irclickid', ['irclickid', 'dilcir']],
-  ['aff_click_id', ['aff_click_id', 'dilcaff']],
-  ['clickid', ['clickid', 'click_id', 'cid', 'dilc']],
+  ['irclickid', ['irclickid', 'dikcilcri']],
+  ['aff_click_id', ['aff_click_id', 'di_kcilc_ffa']],
+  ['clickid', ['clickid', 'dikcilc']],
   ['oppref', ['oppref', 'ferppo']],
-  ['rc_uuid', ['rc_uuid']],
-  ['newsbreak_cid', ['newsbreak_cid']],
-  ['mgid_click_id', ['mgid_click_id', 'mgidclid']]
+  ['rc_uuid', ['rc_uuid', 'diuu_cr']],
+  ['newsbreak_cid', ['newsbreak_cid', 'dic_kaerbswen']],
+  ['mgid_click_id', ['mgid_click_id', 'di_kcilc_digm']]
 ];
 
 let mappingIndex = 0;
