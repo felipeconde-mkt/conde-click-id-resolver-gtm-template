@@ -2,7 +2,8 @@ ___TERMS_OF_SERVICE___
 
 By creating or modifying this file you agree to Google Tag Manager's Community
 Template Gallery Developer Terms of Service available at
-https://developers.google.com/tag-manager/gallery-tos (or such other URL as Google may provide), as modified from time to time.
+https://developers.google.com/tag-manager/gallery-tos (or such other URL as
+Google may provide), as modified from time to time.
 
 ___INFO___
 {
@@ -359,7 +360,7 @@ ___WEB_PERMISSIONS___
           }
         },
         {
-          "key": "queryKeys",
+          "key": "queriesAllowed",
           "value": {
             "type": 1,
             "string": "any"
@@ -385,13 +386,6 @@ ___WEB_PERMISSIONS___
             "type": 1,
             "string": "any"
           }
-        },
-        {
-          "key": "queryKeys",
-          "value": {
-            "type": 1,
-            "string": "any"
-          }
         }
       ]
     },
@@ -408,36 +402,42 @@ ___WEB_PERMISSIONS___
       },
       "param": [
         {
-          "key": "localStorageAccess",
-          "value": {
-            "type": 1,
-            "string": "specific"
-          }
-        },
-        {
-          "key": "localStorageKeys",
+          "key": "keys",
           "value": {
             "type": 2,
             "listItem": [
               {
-                "type": 1,
-                "string": "google_session_attributes"
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "google_session_attributes"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
               }
             ]
-          }
-        },
-        {
-          "key": "read",
-          "value": {
-            "type": 1,
-            "boolean": true
-          }
-        },
-        {
-          "key": "write",
-          "value": {
-            "type": 1,
-            "boolean": true
           }
         }
       ]
