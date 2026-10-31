@@ -1,11 +1,13 @@
 const getUrl = require('getUrl');
 const getReferrerUrl = require('getReferrerUrl');
+const localStorage = require('localStorage');
 const JSON = require('JSON');
 const makeString = require('makeString');
 const getTimestampMillis = require('getTimestampMillis');
 const decodeUriComponent = require('decodeUriComponent');
 const toBase64 = require('toBase64');
 
+const GOOGLE_STORAGE_KEY = 'google_session_attributes';
 
 const trim = value => {
   if (value === undefined || value === null) return '';
@@ -125,6 +127,9 @@ if (data.includeSessionAttributes) {
     googleAttributes.landing_page_referrer = getReferrerUrl();
     encoded = toBase64(JSON.stringify(googleAttributes)).split('+').join('-').split('/').join('_');
     while (encoded.length && encoded[encoded.length - 1] === '=') encoded = encoded.slice(0, encoded.length - 1);
+    localStorage.setItem(GOOGLE_STORAGE_KEY, encoded);
+  } else {
+    encoded = localStorage.getItem(GOOGLE_STORAGE_KEY);
   }
   if (encoded) result.session_attributes_encoded = encoded;
 }
