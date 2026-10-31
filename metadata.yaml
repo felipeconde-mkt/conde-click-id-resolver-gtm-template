@@ -1,6 +1,8 @@
 homepage: "https://conde.marketing"
 documentation: "https://github.com/felipeconde-mkt/conde-click-id-resolver-gtm-template#readme"
 versions:
+  - sha: 5af457e86c4dbcfe1a28fe862949fd30fec9e662
+    changeNotes: Replace the embedded brand thumbnail with the vector Conde MKTech crown.
   - sha: 2e9f19967d1549a7770250c1a0b1c3ee06dbafda
     changeNotes: Correct inverted fallbacks to exact character reversal without added prefixes.
   - sha: 6695eb2c7e465d5ec705d355df7216a99aec4113
