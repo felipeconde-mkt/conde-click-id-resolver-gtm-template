@@ -1,6 +1,8 @@
 homepage: "https://conde.marketing"
 documentation: "https://github.com/felipeconde-mkt/conde-click-id-resolver-gtm-template#readme"
 versions:
+  - sha: 1619aa50316c745a75b602a4dcc6e076bf106560
+    changeNotes: Use the GTM-exported public template ID format and replace the unsupported SVG thumbnail with a Gallery-compatible 96x96 PNG icon.
   - sha: 31c55a0659ce4835cc9b50b0144cbbbe506bb124
     changeNotes: Remove the crown emoji from the template display name and documentation.
   - sha: 07fde48a5bfb9a0b259c38b05a060849f4255707
