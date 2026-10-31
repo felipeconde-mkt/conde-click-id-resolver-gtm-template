@@ -1,6 +1,8 @@
 homepage: "https://conde.marketing"
 documentation: "https://github.com/felipeconde-mkt/conde-click-id-resolver-gtm-template#readme"
 versions:
+  - sha: 1b0f1e08f5be7932d31db4c3699ba8053fca34cf
+    changeNotes: Include the complete required Google Tag Manager Community Template Gallery Developer Terms of Service declaration.
   - sha: 477f97a701045c8359b201f2c1dd7c403309e0b6
     changeNotes: Restore the original google_session_attributes localStorage behavior while keeping individual Click IDs URL-only and never persisted.
   - sha: 0ce242e4af193c253e52a73809e603a2e0e8e342
