@@ -1,0 +1,5 @@
+homepage: "https://conde.marketing"
+documentation: "https://github.com/felipeconde-mkt/conde-click-id-resolver-gtm-template#readme"
+versions:
+  - sha: REPLACE_WITH_TEMPLATE_COMMIT_SHA
+    changeNotes: Initial public release.
