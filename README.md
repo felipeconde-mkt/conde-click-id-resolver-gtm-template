@@ -1,5 +1,9 @@
 # 👑 Click ID Resolver — Conde MKTech
 
+<p align="left">
+  <img src="assets/crown.svg" width="128" height="128" alt="Coroa Conde MKTech">
+</p>
+
 Variável para **Google Tag Manager WEB** que centraliza identificadores de clique de Google Ads, Meta, TikTok, Microsoft Ads, Pinterest, LinkedIn, X, Taboola, Outbrain, Snapchat, Reddit, Yandex, Impact e fontes personalizadas.
 
 ## Destaques
