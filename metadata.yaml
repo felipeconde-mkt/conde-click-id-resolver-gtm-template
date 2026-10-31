@@ -1,6 +1,8 @@
 homepage: "https://conde.marketing"
 documentation: "https://github.com/felipeconde-mkt/conde-click-id-resolver-gtm-template#readme"
 versions:
+  - sha: ce2ac483a52e4e70da85987aea8eed28678a4b70
+    changeNotes: Simplify custom identifiers to a single parameter field. The parameter name is also used as the output key and its exact reversed form is tested automatically as fallback.
   - sha: 1619aa50316c745a75b602a4dcc6e076bf106560
     changeNotes: Use the GTM-exported public template ID format and replace the unsupported SVG thumbnail with a Gallery-compatible 96x96 PNG icon.
   - sha: 31c55a0659ce4835cc9b50b0144cbbbe506bb124
